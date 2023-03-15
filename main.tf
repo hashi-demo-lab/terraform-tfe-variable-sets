@@ -41,4 +41,6 @@ resource "tfe_workspace_variable_set" "set" {
   workspace_id    = each.value
 }
 
-
+locals {
+  workspaceMap = {for k, v in try(data.tfe_workspace_ids.ws[0].ids, []) : k => v}
+}

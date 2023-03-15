@@ -7,3 +7,8 @@ output "variable_set_name" {
   value       = var.create_variable_set ? tfe_variable_set.set[0].name : data.tfe_variable_set.data[0].name
   description = "Output for the name of the variable set that has been created or updated"
 }
+
+output "workspaces" {
+  value = local.workspaceMap
+  description = "workspace to attach varsets"
+}
