@@ -16,7 +16,7 @@ resource "tfe_variable" "var" {
   value           = each.value.hcl ? replace(jsonencode(each.value.value), "/\"(\\w+?)\":/", "$1=") : try(tostring(each.value.value), null)
   category        = each.value.category
   hcl             = each.value.hcl
-  variable_set_id = var.create_variable_set ? tfe_variable_set.set[0].id : data.tfe_variable_set.set[0].id
+  variable_set_id = var.create_variable_set ? tfe_variable_set.set[0].id : data.tfe_variable_set.data[0].id
   description     = each.value.description
   sensitive       = each.value.sensitive
 }
