@@ -35,6 +35,8 @@ data "tfe_variable_set" "data" {
   organization = data.tfe_organization.org.name
 }
 
+
+/* ## TO REMOVE - Due to dependency logic this should be moved outside module
 resource "tfe_workspace_variable_set" "set" {
   for_each        = { for k, v in try(data.tfe_workspace_ids.ws[0].ids, []) : k => v if var.create_variable_set == true } # using this for now but needs to also support var.create_variable_set
   variable_set_id = try(tfe_variable_set.set[0].id)
@@ -44,3 +46,4 @@ resource "tfe_workspace_variable_set" "set" {
 locals {
   workspaceMap = {for k, v in try(data.tfe_workspace_ids.ws[0].ids, []) : k => v}
 }
+ */

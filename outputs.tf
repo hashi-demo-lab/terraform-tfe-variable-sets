@@ -8,7 +8,3 @@ output "variable_set_name" {
   description = "Output for the name of the variable set that has been created or updated"
 }
 
-output "workspaces" {
-  value = local.workspaceMap
-  description = "workspace to attach varsets"
-}
