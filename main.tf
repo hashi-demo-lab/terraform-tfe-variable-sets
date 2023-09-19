@@ -1,13 +1,14 @@
 
 
-data "tfe_organization" "org" {
+#not required reduce api calls
+/* data "tfe_organization" "org" {
   name = var.organization
-}
+} */
 
 data "tfe_workspace_ids" "ws" {
   count        = var.create_variable_set ? 1 : 0
   tag_names    = var.tags
-  organization = data.tfe_organization.org.name
+  organization = var.organization
 }
 
 resource "tfe_variable" "var" {
@@ -26,13 +27,13 @@ resource "tfe_variable_set" "set" {
   name         = var.variable_set_name
   global       = var.global
   description  = var.variable_set_description
-  organization = data.tfe_organization.org.name
+  organization = var.organization
 }
 
 data "tfe_variable_set" "data" {
   count        = var.create_variable_set ? 0 : 1
   name         = var.variable_set_name
-  organization = data.tfe_organization.org.name
+  organization = var.organization
 }
 
 
