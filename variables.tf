@@ -1,6 +1,5 @@
 variable "variables" {
   type = map(object({
-    category    = string
     description = string
     category    = string
     sensitive   = optional(bool, false)
